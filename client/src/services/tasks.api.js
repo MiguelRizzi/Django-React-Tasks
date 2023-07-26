@@ -1,5 +1,13 @@
 import axios from "axios";
 
+const taskApi = axios.create({
+    baseURL: "http://127.0.0.1:8000/tasks/api/tasks/",
+})
+
 export function getTasks() {
-    return axios.get("http://127.0.0.1:8000/tasks/api/tasks/");
+    return taskApi.get("/");
+}
+
+export function createTask(task) {
+    return taskApi.post("/", task);
 }

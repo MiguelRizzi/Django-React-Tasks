@@ -1,11 +1,14 @@
-import { useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
+import moment from 'moment';
 import { getTasks } from '../services/tasks.api';
 
 export function TasksList() {
+    const [tasks, setTasks] = useState([]);
     useEffect(() => {
-        function loadTasks(){
-            const res = getTasks();
+        async function loadTasks(){
+            const res = await getTasks();
             console.log(res);
+            setTasks(res.data);
         }
 
         loadTasks();
@@ -14,5 +17,16 @@ export function TasksList() {
     return (
         <div>
             <h1>Tasks List</h1>
-        </div>)
+            {tasks.map(task => (
+                <div key={task.id}>
+                    <h1>{task.title}</h1>
+                    <p>{task.descrption}</p>
+                    <p>{moment(task.creation_date).format('DD/MM/YYYY')}</p>
+                    <p>{task.completed}</p>
+
+                </div>
+
+            ))}
+        </div>
+    );
 }

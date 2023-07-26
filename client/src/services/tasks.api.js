@@ -8,10 +8,18 @@ export function getTasks() {
     return taskApi.get("/");
 }
 
+export function getTaskById(id) {
+    return taskApi.get(`/${id}/`);
+}
+
 export function createTask(task) {
     return taskApi.post("/", task);
 }
 
 export function deleteTask(id) {
     return taskApi.delete(`/${id}`);
+}
+
+export function updateTask(id, task) {
+    return taskApi.put(`/${id}/`, task);
 }

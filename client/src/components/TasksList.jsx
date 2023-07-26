@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import moment from 'moment';
 import { getTasks } from '../services/tasks.api';
+import { TaskCard } from './TaskCard';
 
 export function TasksList() {
     const [tasks, setTasks] = useState([]);
@@ -18,14 +19,7 @@ export function TasksList() {
         <div>
             <h1>Tasks List</h1>
             {tasks.map(task => (
-                <div key={task.id}>
-                    <h1>{task.title}</h1>
-                    <p>{task.descrption}</p>
-                    <p>{moment(task.creation_date).format('DD/MM/YYYY')}</p>
-                    <p>{task.completed}</p>
-
-                </div>
-
+                <TaskCard key={task.id} task={task} />
             ))}
         </div>
     );

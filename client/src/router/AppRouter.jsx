@@ -14,6 +14,7 @@ export const AppRouter = () => {
         <Route path="/" element={ <Navigate to="/tasks"/> }/>
         <Route path="/tasks" element={ <TasksPage/> }/>
         <Route path="/tasks/new" element={ <TaskFormPage/> }/>
+        <Route path="/tasks/:id" element={ <TaskFormPage/> }/>
       </Routes>
     </Router>
   )

@@ -11,3 +11,7 @@ export function getTasks() {
 export function createTask(task) {
     return taskApi.post("/", task);
 }
+
+export function deleteTask(id) {
+    return taskApi.delete(`/${id}`);
+}
